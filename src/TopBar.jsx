@@ -32,7 +32,11 @@ export default function TopBar() {
     const handleTopBar = () => {
       let nav = topBar.current;
       let bool = window.scrollY > nav.getBoundingClientRect().top;
-      console.table(window.scrollY, nav.getBoundingClientRect().top,window.scrollY > nav.getBoundingClientRect().top + 200);
+      console.table(
+        window.scrollY,
+        nav.getBoundingClientRect().top,
+        window.scrollY > nav.getBoundingClientRect().top + 200
+      );
       // console.table(window.scrollY > nav.getBoundingClientRect().top + 200);
       console.log(nav.classList);
       // nav.classList.toggle(
@@ -55,7 +59,7 @@ export default function TopBar() {
       className="top-0 grid grid-cols-3 align-middle px-3 bg-white "
     >
       <span id="hero-logo">
-        <img src="/Logo.png" className="self-center" />
+        <img alt="Company Logo" src="/Logo.png" className="self-center" />
       </span>
       <span
         id="hero-categories"
