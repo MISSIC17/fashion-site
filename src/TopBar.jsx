@@ -3,15 +3,15 @@ import { useEffect, useRef } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 import { RxHamburgerMenu } from "react-icons/rx";
 export default function TopBar() {
-  // algorithm to provide correct grid row positioning to the grid elements
   const searchBar = useRef("");
   const topBar = useRef("");
   const addClass = (bool) => {
-    if (bool) {
-      document.querySelector("#animDiv").classList.add("afterInputAnim");
-    } else {
-      document.querySelector("#animDiv").classList.remove("afterInputAnim");
-    }
+    document.querySelector("#animDiv").classList.toggle("afterInputAnim", bool);
+    // if (bool) {
+    //   document.querySelector("#animDiv").classList.add("afterInputAnim");
+    // } else {
+    //   document.querySelector("#animDiv").classList.remove("afterInputAnim");
+    // }
   };
   const focusSearch = () => {
     searchBar.current.focus();
@@ -31,15 +31,15 @@ export default function TopBar() {
   useEffect(() => {
     const handleTopBar = () => {
       let nav = topBar.current;
-      // console.log(window.scrollY, nav.getBoundingClientRect().top);
-      nav.classList.toggle(
-        "sticky",
-        window.scrollY > nav.getBoundingClientRect().top + 300
-      );
-      nav.classList.toggle(
-        "stickOut",
-        window.scrollY > nav.getBoundingClientRect().top + 300
-      );
+      let bool = window.scrollY > nav.getBoundingClientRect().top;
+      console.table(window.scrollY, nav.getBoundingClientRect().top,window.scrollY > nav.getBoundingClientRect().top + 200);
+      // console.table(window.scrollY > nav.getBoundingClientRect().top + 200);
+      console.log(nav.classList);
+      // nav.classList.toggle(
+      //   "sticky",
+      //   window.scrollY > nav.getBoundingClientRect().top + 300
+      // );
+      nav.classList.toggle("stickOut", bool);
     };
     window.addEventListener("scroll", () => {
       handleTopBar();
@@ -52,7 +52,7 @@ export default function TopBar() {
     <div
       ref={topBar}
       id="top-bar"
-      className="top-0 grid grid-cols-3 align-middle px-3 bg-white relative z-10 "
+      className="top-0 grid grid-cols-3 align-middle px-3 bg-white "
     >
       <span id="hero-logo">
         <img src="/Logo.png" className="self-center" />
@@ -67,7 +67,10 @@ export default function TopBar() {
         <li>Style</li>
         <li>Lookbook</li>
       </span>
-      <span id="left-content" className="flex flex-row gap-3 justify-end self-center justify-end">
+      <span
+        id="left-content"
+        className="flex flex-row gap-3 justify-end self-center"
+      >
         <span
           id="hero-search"
           className="flex flex-row gap-2 self-center justify-end"

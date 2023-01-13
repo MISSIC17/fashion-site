@@ -18,6 +18,7 @@ const makeGrids = (length) => {
             id="grid-image"
             style={{ backgroundImage: `url('${index}.jpg')` }}
             className={`h-[27.8em] aspect-[0.75] bg-cover bg-no-repeat bg-center`}
+            loading={'lazy'}
           ></div>
         </div>
       </div>

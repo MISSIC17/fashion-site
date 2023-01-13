@@ -60,6 +60,8 @@ input:focus {
   }
 }
 .stickOut {
+  position: sticky;
+  z-index: 100;
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
     0 2px 4px -2px var(--tw-shadow-color);
@@ -110,10 +112,14 @@ input:focus {
   }
   #grid-section {
     grid-template-columns: 1fr 1fr;
+    column-gap: 10em;
   }
 }
 
 @media screen and (max-width: 720px) {
+  #search {
+    max-width: 50vw;
+  }
   #grid-section {
     grid-template-columns: 1fr;
   }
