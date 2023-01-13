@@ -31,7 +31,7 @@ export default function TopBar() {
   useEffect(() => {
     const handleTopBar = () => {
       let nav = topBar.current;
-      console.log(window.scrollY, nav.getBoundingClientRect().top);
+      // console.log(window.scrollY, nav.getBoundingClientRect().top);
       nav.classList.toggle(
         "sticky",
         window.scrollY > nav.getBoundingClientRect().top + 300
@@ -47,7 +47,7 @@ export default function TopBar() {
     return () => {
       window.removeEventListener("scroll", handleTopBar);
     };
-  }, []);
+  }, [topBar]);
   return (
     <div
       ref={topBar}

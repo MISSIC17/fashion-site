@@ -11,6 +11,7 @@ export default function Hero() {
     }
     return sequence;
   };
+  const gridWrapper = useRef("");
   const gridPlacement = () => {
     const gridDivs = document.querySelectorAll("#grid-section>div");
     if (window.innerWidth >= 1024) {
@@ -57,6 +58,7 @@ export default function Hero() {
           normalPos[1] += 2;
         } else if (secondRow.includes(gridNo)) {
           gridDivs[i].style.gridRow = `${centerPos[0]}/${centerPos[1]}`;
+          gridDivs[i].style.gridColumn = "2";
           centerPos[0] += 2;
           centerPos[1] += 2;
         }
@@ -84,6 +86,7 @@ export default function Hero() {
       <div
         id="grid-section"
         className="grid place-items-center gap-[8em] grid-cols-3 w-fit justify-self-center py-20 transform translate-x-[2%]"
+        ref={gridWrapper}
       >
         {makeGrids(8)}
       </div>

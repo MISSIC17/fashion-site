@@ -9,7 +9,7 @@ const makeGrids = (length) => {
         className="grid w-min grid-flow-dense place-items-center"
       >
         <div id="wrapper" className="relative">
-          <div className="absolute -left-[5ch] flex align-top justify-center justify-self-center gap-3 transform h-[2ch] rotate-90 -translate-y-full origin-bottom-left">
+          <div className="absolute -left-[2.5ch] md:-left-[5ch] flex align-top justify-center justify-self-center gap-3 transform h-[2ch] rotate-90 -translate-y-full origin-bottom-left">
             <span>Mens</span>
             <span className="relative inline-block h-[1px] w-20 bg-black self-center"></span>
             <span>Shirts</span>
