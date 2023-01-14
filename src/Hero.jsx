@@ -14,7 +14,7 @@ export default function Hero() {
   const gridWrapper = useRef("");
   const gridPlacement = () => {
     const gridDivs = document.querySelectorAll("#grid-section>div");
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1200) {
       let count = 0;
       let normalPos = [1, 3];
       let centerPos = [2, 4];
@@ -44,7 +44,7 @@ export default function Hero() {
           centerPos[1] += 2;
         }
       }
-    } else if (window.innerWidth >= 720) {
+    } else if (window.innerWidth >= 820) {
       let normalPos = [1, 3];
       let centerPos = [2, 4];
       let firstRow = createSequence(1, 2, gridDivs.length);

@@ -1,17 +1,14 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
+import { IconContext } from "react-icons";
 import { RiSearch2Line } from "react-icons/ri";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { RxCross1 } from "react-icons/rx";
 export default function TopBar() {
   const searchBar = useRef("");
   const topBar = useRef("");
   const addClass = (bool) => {
     document.querySelector("#animDiv").classList.toggle("afterInputAnim", bool);
-    // if (bool) {
-    //   document.querySelector("#animDiv").classList.add("afterInputAnim");
-    // } else {
-    //   document.querySelector("#animDiv").classList.remove("afterInputAnim");
-    // }
   };
   const focusSearch = () => {
     searchBar.current.focus();
@@ -32,17 +29,6 @@ export default function TopBar() {
     const handleTopBar = () => {
       let nav = topBar.current;
       let bool = window.scrollY > nav.getBoundingClientRect().top;
-      console.table(
-        window.scrollY,
-        nav.getBoundingClientRect().top,
-        window.scrollY > nav.getBoundingClientRect().top + 200
-      );
-      // console.table(window.scrollY > nav.getBoundingClientRect().top + 200);
-      console.log(nav.classList);
-      // nav.classList.toggle(
-      //   "sticky",
-      //   window.scrollY > nav.getBoundingClientRect().top + 300
-      // );
       nav.classList.toggle("stickOut", bool);
     };
     window.addEventListener("scroll", () => {
@@ -52,6 +38,33 @@ export default function TopBar() {
       window.removeEventListener("scroll", handleTopBar);
     };
   }, [topBar]);
+  const [burgerOpen, setBurgerOpen] = useState(false);
+  const handleBurger = () => {
+    setBurgerOpen(!burgerOpen);
+    document
+      .querySelector("#hero-categories")
+      .classList.add("hero-categories-responsive", "hero-categories-f-anim");
+    document
+      .querySelector("#hero-categories")
+      .classList.remove("hero-categories-b-anim");
+    document.body.style.overflow = "hidden";
+  };
+  const handleCloseBurger = () => {
+    document
+      .querySelector("#hero-categories")
+      .classList.add("hero-categories-b-anim");
+    setTimeout(() => {
+      document
+        .querySelector("#hero-categories")
+        .classList.remove(
+          "hero-categories-responsive",
+          "hero-categories-f-anim"
+        );
+
+      document.body.style.overflow = "auto";
+      setBurgerOpen(!burgerOpen);
+    }, 300);
+  };
   return (
     <div
       ref={topBar}
@@ -61,15 +74,21 @@ export default function TopBar() {
       <span id="hero-logo">
         <img alt="Company Logo" src="/Logo.png" className="self-center" />
       </span>
-      <span
-        id="hero-categories"
-        className="flex flex-row justify-around gap-4 self-center"
-      >
+      <span id="hero-categories" className="hero-categories">
         <li>Mens</li>
         <li>Womens</li>
         <li>Sport</li>
         <li>Style</li>
         <li>Lookbook</li>
+        {burgerOpen && (
+          <IconContext.Provider value={{ color: "#fff" }}>
+            <RxCross1
+              id="top-cross-btn"
+              className="h-[2em] w-[2em] absolute top-6 right-6 transform hover:scale-105"
+              onClick={handleCloseBurger}
+            />
+          </IconContext.Provider>
+        )}
       </span>
       <span
         id="left-content"
@@ -96,7 +115,11 @@ export default function TopBar() {
             onClick={focusSearch}
           />
         </span>
-        <RxHamburgerMenu className="icons hidden self-center " />
+        <RxHamburgerMenu
+          id="hamburger"
+          className="icons self-center hidden "
+          onClick={handleBurger}
+        />
       </span>
     </div>
   );

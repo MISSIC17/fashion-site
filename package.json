@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "tailwind": "npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch"
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./public/output.css --watch"
   },
   "dependencies": {
     "@react-spring/web": "^9.6.1",
