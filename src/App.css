@@ -14,7 +14,7 @@ li {
   position: relative;
 }
 .hero-categories {
-  display: none;
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-self: center;

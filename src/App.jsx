@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
-import "../public/output.css";
+import "./output.css";
 import Header from "./Header";
 import Hero from "./Hero";
 import TopBar from "./TopBar";
