@@ -39,7 +39,7 @@ li {
 }
 .hero-categories-responsive {
   position: absolute;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -227,7 +227,8 @@ input:focus {
     display: flex;
   }
   .hero-categories {
-    /* display: none; */
+    display: none;
+    color: #fff;
   }
   #top-bar {
     display: flex;
@@ -238,12 +239,6 @@ input:focus {
   }
   #hamburger {
     display: block;
-  }
-  /* #top-cross-btn {
-    display: block;
-  } */
-  .hero-categories {
-    color: #fff;
   }
   .hero-categories > li {
     width: fit-content;
